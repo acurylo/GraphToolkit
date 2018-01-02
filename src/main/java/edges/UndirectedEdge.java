@@ -28,10 +28,12 @@ public class UndirectedEdge implements Edge, Comparable<UndirectedEdge> {
         this.weight.putAll(e.weight);
     }
 
+    @Override
     public int either() {
         return v;
     }
 
+    @Override
     public int other(int vertex) {
         if      (vertex == v) return w;
         else if (vertex == w) return v;
@@ -44,6 +46,13 @@ public class UndirectedEdge implements Edge, Comparable<UndirectedEdge> {
             return weight.get(weightName);
         else
             throw new IllegalArgumentException("\"" + weightName + "\"" + " is not a weight name.");
+    }
+
+    @Override
+    public Map<String, Double> weights() {
+        Map<String, Double> weightCopy = new HashMap<>();
+        weightCopy.putAll(weight);
+        return weightCopy;
     }
 
     public boolean checkVertexes(UndirectedEdge e) {
@@ -64,8 +73,6 @@ public class UndirectedEdge implements Edge, Comparable<UndirectedEdge> {
 
     @Override
     public int compareTo(UndirectedEdge that) {
-        if (this.weight("weight") < that.weight("weight")) return -1;
-        else if (this.weight("weight") > that.weight("weight")) return +1;
-        else return 0;
+        return Double.compare(this.weight("weight"), that.weight("weight"));
     }
 }

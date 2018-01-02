@@ -28,6 +28,18 @@ public class DirectedEdge implements Edge, Comparable<DirectedEdge> {
         this.weight.putAll(e.weight);
     }
 
+    @Override
+    public int either() {
+        return v;
+    }
+
+    @Override
+    public int other(int vertex) {
+        if      (vertex == v) return w;
+        else if (vertex == w) return v;
+        else throw new RuntimeException("Inconsistent edge.");
+    }
+
     public int from() {
         return v;
     }
@@ -48,6 +60,13 @@ public class DirectedEdge implements Edge, Comparable<DirectedEdge> {
             throw new IllegalArgumentException("\"" + weightName + "\"" + " is not a weight name.");
     }
 
+    @Override
+    public Map<String, Double> weights() {
+        Map<String, Double> weightCopy = new HashMap<>();
+        weightCopy.putAll(weight);
+        return weightCopy;
+    }
+
     public boolean checkVertexes(DirectedEdge e) {
         int v = e.from();
         int w = e.to();
@@ -66,8 +85,6 @@ public class DirectedEdge implements Edge, Comparable<DirectedEdge> {
 
     @Override
     public int compareTo(DirectedEdge that) {
-        if (this.weight("weight") < that.weight("weight")) return -1;
-        else if (this.weight("weight") > that.weight("weight")) return +1;
-        else return 0;
+        return Double.compare(this.weight("weight"), that.weight("weight"));
     }
 }
