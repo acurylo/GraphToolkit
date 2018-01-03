@@ -1,5 +1,7 @@
 package graphs;
 
+import algorithms.BreadthFirstSearch;
+import algorithms.DepthFirstSearch;
 import collections.Bag;
 import edges.Edge;
 
@@ -23,9 +25,9 @@ public interface Graph {
     Iterable<? extends Edge> nbsO(int v);
     boolean containsEdge(int v, int w);
     boolean isWeightedGraph();
+    DepthFirstSearch executeDepthFirstSearch(int s);
+    BreadthFirstSearch executeBreadthFirstSearch(int s);
  //TODO
- // DepthFirstSearch executeDepthFirstSearch(int s);
- // BreadthFirstSearch executeBreadthFirstSearch(int s);
  // Cycle executeCycle();
  // Dijkstra executeDijkstra(int s);
 }

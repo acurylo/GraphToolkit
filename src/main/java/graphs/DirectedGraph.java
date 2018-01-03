@@ -1,5 +1,7 @@
 package graphs;
 
+import algorithms.BreadthFirstSearch;
+import algorithms.DepthFirstSearch;
 import collections.Bag;
 import edges.DirectedEdge;
 import edges.Edge;
@@ -287,6 +289,16 @@ public class DirectedGraph implements Graph {
     @Override
     public boolean isWeightedGraph() {
         return type == GraphType.WEIGHTED;
+    }
+
+    @Override
+    public DepthFirstSearch executeDepthFirstSearch(int s) {
+        return new DepthFirstSearch(new DirectedGraph(V, E, type, adj), s);
+    }
+
+    @Override
+    public BreadthFirstSearch executeBreadthFirstSearch(int s) {
+        return new BreadthFirstSearch(new DirectedGraph(V, E, type, adj), s);
     }
 
     public int degreeIn (int v) {

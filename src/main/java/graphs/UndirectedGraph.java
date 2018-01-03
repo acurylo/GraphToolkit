@@ -1,5 +1,7 @@
 package graphs;
 
+import algorithms.BreadthFirstSearch;
+import algorithms.DepthFirstSearch;
 import collections.Bag;
 import edges.Edge;
 import edges.UndirectedEdge;
@@ -294,6 +296,16 @@ public class UndirectedGraph implements Graph {
     @Override
     public boolean isWeightedGraph() {
         return type == GraphType.WEIGHTED;
+    }
+
+    @Override
+    public DepthFirstSearch executeDepthFirstSearch(int s) {
+        return new DepthFirstSearch(new UndirectedGraph(V, E, type, adj), s);
+    }
+
+    @Override
+    public BreadthFirstSearch executeBreadthFirstSearch(int s) {
+        return new BreadthFirstSearch(new UndirectedGraph(V, E, type, adj), s);
     }
 
     public int degree(int v) {
