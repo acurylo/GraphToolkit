@@ -1,6 +1,8 @@
 package graphs;
 
 import algorithms.BreadthFirstSearch;
+import algorithms.ConnectedComponents;
+import algorithms.Cycle;
 import algorithms.DepthFirstSearch;
 import collections.Bag;
 import edges.Edge;
@@ -27,7 +29,8 @@ public interface Graph {
     boolean isWeightedGraph();
     DepthFirstSearch executeDepthFirstSearch(int s);
     BreadthFirstSearch executeBreadthFirstSearch(int s);
+    Cycle executeCycle();
+    ConnectedComponents executeConnectedComponents();
  //TODO
- // Cycle executeCycle();
  // Dijkstra executeDijkstra(int s);
 }

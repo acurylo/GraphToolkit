@@ -1,6 +1,8 @@
 package graphs;
 
 import algorithms.BreadthFirstSearch;
+import algorithms.ConnectedComponents;
+import algorithms.Cycle;
 import algorithms.DepthFirstSearch;
 import collections.Bag;
 import edges.Edge;
@@ -306,6 +308,16 @@ public class UndirectedGraph implements Graph {
     @Override
     public BreadthFirstSearch executeBreadthFirstSearch(int s) {
         return new BreadthFirstSearch(new UndirectedGraph(V, E, type, adj), s);
+    }
+
+    @Override
+    public Cycle executeCycle() {
+        return new Cycle(new UndirectedGraph(V, E, type, adj));
+    }
+
+    @Override
+    public ConnectedComponents executeConnectedComponents() {
+        return new ConnectedComponents(new UndirectedGraph(V, E, type, adj));
     }
 
     public int degree(int v) {

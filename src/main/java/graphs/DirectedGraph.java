@@ -1,7 +1,6 @@
 package graphs;
 
-import algorithms.BreadthFirstSearch;
-import algorithms.DepthFirstSearch;
+import algorithms.*;
 import collections.Bag;
 import edges.DirectedEdge;
 import edges.Edge;
@@ -301,6 +300,24 @@ public class DirectedGraph implements Graph {
         return new BreadthFirstSearch(new DirectedGraph(V, E, type, adj), s);
     }
 
+    @Override
+    public Cycle executeCycle() {
+        return new Cycle(new DirectedGraph(V, E, type, adj));
+    }
+
+    @Override
+    public ConnectedComponents executeConnectedComponents() {
+        return new ConnectedComponents(new DirectedGraph(V, E, type, adj));
+    }
+
+    public DepthFirstOrder executeDepthFirstOrder() {
+        return new DepthFirstOrder(new DirectedGraph(V, E, type, adj));
+    }
+
+    public TopologicalSort executeTopologicalSort() {
+        return new TopologicalSort(new DirectedGraph(V, E, type, adj));
+    }
+
     public int degreeIn (int v) {
         int count = 0;
         for (DirectedEdge e : edges()) {
@@ -312,5 +329,16 @@ public class DirectedGraph implements Graph {
 
     public int degreeOut (int v) {
       return adj[v].size();
+    }
+
+    @SuppressWarnings("unchecked")
+    public DirectedGraph reverse() {
+        Bag<DirectedEdge>[] adjNew =  (Bag<DirectedEdge>[]) new Bag[V];
+        for (int v = 0; v < V; v++)
+            adjNew[v] = new Bag<>();
+        for(int v = 0; v < V; v++)
+            for (DirectedEdge e : adj[v])
+                adjNew[e.to()].add(e.reverse());
+        return new DirectedGraph(V, E, type, adjNew);
     }
 }
