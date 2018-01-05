@@ -1,9 +1,6 @@
 package graphs;
 
-import algorithms.BreadthFirstSearch;
-import algorithms.ConnectedComponents;
-import algorithms.Cycle;
-import algorithms.DepthFirstSearch;
+import algorithms.*;
 import collections.Bag;
 import edges.Edge;
 import edges.UndirectedEdge;
@@ -318,6 +315,14 @@ public class UndirectedGraph implements Graph {
     @Override
     public ConnectedComponents executeConnectedComponents() {
         return new ConnectedComponents(new UndirectedGraph(V, E, type, adj));
+    }
+
+    public Kruskal executeKruskal() {
+        return new Kruskal(new UndirectedGraph(V, E, type, adj));
+    }
+
+    public Prim executePrim() {
+        return new Prim(new UndirectedGraph(V, E, type, adj));
     }
 
     public int degree(int v) {
