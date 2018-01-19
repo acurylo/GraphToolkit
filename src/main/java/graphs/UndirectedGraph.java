@@ -317,6 +317,11 @@ public class UndirectedGraph implements Graph {
         return new ConnectedComponents(new UndirectedGraph(V, E, type, adj));
     }
 
+    @Override
+    public Dijkstra executeDijkstra(int s) {
+        return new Dijkstra(new UndirectedGraph(V, E, type, adj),s);
+    }
+
     public Kruskal executeKruskal() {
         return new Kruskal(new UndirectedGraph(V, E, type, adj));
     }
@@ -345,8 +350,14 @@ public class UndirectedGraph implements Graph {
         return E == V*(V-1)/2;
     }
 
-    //TODO
     public boolean isTree() {
+       if(V-1 == E) {
+           for (int v = 0; v < V; v++) {
+               if (degree(v) == 0)
+                   return false;
+           }
+           return true;
+       }
        return false;
     }
 

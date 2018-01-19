@@ -310,6 +310,11 @@ public class DirectedGraph implements Graph {
         return new ConnectedComponents(new DirectedGraph(V, E, type, adj));
     }
 
+    @Override
+    public Dijkstra executeDijkstra(int s) {
+        return new Dijkstra(new DirectedGraph(V, E, type, adj),s);
+    }
+
     public DepthFirstOrder executeDepthFirstOrder() {
         return new DepthFirstOrder(new DirectedGraph(V, E, type, adj));
     }

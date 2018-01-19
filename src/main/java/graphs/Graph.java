@@ -1,9 +1,6 @@
 package graphs;
 
-import algorithms.BreadthFirstSearch;
-import algorithms.ConnectedComponents;
-import algorithms.Cycle;
-import algorithms.DepthFirstSearch;
+import algorithms.*;
 import collections.Bag;
 import edges.Edge;
 
@@ -31,6 +28,5 @@ public interface Graph {
     BreadthFirstSearch executeBreadthFirstSearch(int s);
     Cycle executeCycle();
     ConnectedComponents executeConnectedComponents();
- //TODO
- // Dijkstra executeDijkstra(int s);
+    Dijkstra executeDijkstra(int s);
 }
