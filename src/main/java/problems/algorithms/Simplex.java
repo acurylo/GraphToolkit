@@ -167,15 +167,20 @@ public class Simplex {
     }
 
     private int findOutgoingVarIndex(double[] array, int column) {
-        int index = 0;
-            for (int i = 0; i < array.length; i++) {
-                if (i == 0)
-                    i = 0;
-                else {
+        int index = findFirstGreaterThenOrEqualZero(array, column);
+            for (int i = index+1; i < array.length; i++) {
                     if (A[i][column] > 0 && array[i] < array[index])
                         index = i;
-                }
             }
+        return index;
+    }
+
+    //Return index of first greater than or equal zero and not equal to positive infinity
+    private int findFirstGreaterThenOrEqualZero(double[] array, int column){
+        int index = 0;
+        for (int i = 0; i < array.length; i++)
+            if(A[i][column] > 0 && array[i] >= 0 && array[i] != Double.POSITIVE_INFINITY)
+                return i;
         return index;
     }
 

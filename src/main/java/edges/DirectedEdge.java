@@ -21,6 +21,13 @@ public class DirectedEdge implements Edge, Comparable<DirectedEdge> {
             throw new IllegalArgumentException("\"weight\" key required.");
     }
 
+    public DirectedEdge(int v, int w, double weight){
+        this.v = v;
+        this.w = w;
+        this.weight = new HashMap<>();
+        this.weight.put("weight", weight);
+    }
+
     public DirectedEdge(DirectedEdge e) {
         this.v = e.v;
         this.w = e.w;

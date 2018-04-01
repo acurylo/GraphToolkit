@@ -68,7 +68,7 @@ public class UndirectedGraph implements Graph {
         adj = adjContainer;
     }
 
-    private UndirectedGraph(int V, int E, GraphType type, Bag<UndirectedEdge>[] adj) {
+    public UndirectedGraph(int V, int E, GraphType type, Bag<UndirectedEdge>[] adj) {
         this.V = V;
         this.E = E;
         this.type = type;

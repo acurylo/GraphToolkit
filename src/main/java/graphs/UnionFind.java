@@ -34,4 +34,8 @@ public class UnionFind {
         id[pRoot] = qRoot;
         count--;
     }
+
+    public boolean isConnected() {
+        return count == 1;
+    }
 }

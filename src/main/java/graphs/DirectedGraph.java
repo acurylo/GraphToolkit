@@ -66,7 +66,7 @@ public class DirectedGraph implements Graph {
         adj = adjContainer;
     }
 
-    private DirectedGraph(int V, int E, GraphType type, Bag<DirectedEdge>[] adj) {
+    public DirectedGraph(int V, int E, GraphType type, Bag<DirectedEdge>[] adj) {
         this.V = V;
         this.E = E;
         this.type = type;

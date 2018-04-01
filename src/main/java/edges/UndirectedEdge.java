@@ -21,6 +21,13 @@ public class UndirectedEdge implements Edge, Comparable<UndirectedEdge> {
             throw new IllegalArgumentException("\"weight\" key required.");
     }
 
+    public UndirectedEdge(int v, int w, double weight) {
+        this.v = v;
+        this.w = w;
+        this.weight = new HashMap<>();
+        this.weight.put("weight",weight);
+    }
+
     public UndirectedEdge(UndirectedEdge e) {
         this.v = e.v;
         this.w = e.w;
